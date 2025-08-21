@@ -1,0 +1,4 @@
+
+# $1 - IP, i.e.:192.168.1.107
+cd backend
+sudo uv run fastapi run --port 80 --host $1

@@ -1,0 +1,103 @@
+@import "tailwindcss";
+/* @import "tailwindcss/preflight"; */
+
+@tailwind utilities;
+/* @tailwind components; */
+
+
+:root {
+    /* --acme-canvas-color: oklch(97% 0.014 254.604); */
+    --acme-bg-color: var(--color-gray-50);
+    --acme-canvas-color: var(--color-blue-50);
+    --acme-accent-color: oklch(87.9% 0.169 91.605);
+    --acme-main-color: oklch(88.2% 0.059 254.128);
+    --acme-dark-color: var(--color-blue-950);
+
+    color: var(--acme-dark-color);
+}
+
+[data-theme="dark"] {
+    --acme-bg-color: var(--color-gray-200);
+    --acme-canvas-color: oklch(0.21 0.034 264.665);
+    --acme-accent-color: oklch(92.4% 0.12 95.746);
+    --acme-main-color: oklch(88.2% 0.059 254.128);
+    --acme-dark-color: oklch(28.2% 0.091 267.935);
+}
+
+
+@theme inline {
+    --color-back: var(--acme-bg-color);
+    --color-canvas: var(--acme-canvas-color);
+    --color-accent: var(--acme-accent-color);
+    --color-main: var(--acme-main-color);
+    --color-dark: var(--acme-dark-color);
+
+}
+
+
+@layer components {
+    td {
+        @apply py-1 h-13 px-4;
+    }
+
+    h2 {
+        @apply text-6xl font-bold text-shadow-lg py-8
+    }
+
+    .badge {
+        @apply px-4 py-2 bg-dark text-canvas rounded-xl text-sm shadow-md
+    }
+
+    .button {
+        @apply cursor-pointer rounded-xl bg-dark/90 drop-shadow-sm px-4 py-2 text-sm font-medium tracking-wide text-canvas disabled:bg-gray-400 disabled:cursor-not-allowed;
+    }
+
+    .accent-button {
+        @apply cursor-pointer shadow-md shadow-accent/30 bg-accent rounded-4xl py-2 px-3 text-base flex items-center gap-1 hover:scale-95 transition-transform disabled:bg-gray-200 disabled:scale-95 disabled:shadow-initial;
+
+        svg {
+            @apply text-3xl group-hover:rotate-12 transition-transform
+        }
+    }
+
+    .input {
+        @apply bg-dark text-center text-canvas text-2xl rounded-xl px-4 py-4 focus:outline-none shadow-sm transition-shadow duration-300 focus:shadow-lg focus:shadow-dark/40;
+    }
+
+    .notification-error {
+        @apply bg-red-300!
+    }
+
+    .notification-success {
+        @apply bg-emerald-400!
+    }
+}
+
+@theme {
+    --animate-slidedown: slidedown 0.5s ease-in infinity;
+
+    @keyframes slidedown {
+        from {
+            transform: translateY(-200px);
+        }
+
+        to {
+            transform: translateY(0px);
+        }
+    }
+
+
+    --animate-appear: appear 0.5s ease-in infinity;
+
+    @keyframes appear {
+        0% {
+            opacity: 0;
+            max-height: 200px;
+        }
+
+        100% {
+            opacity: 1;
+            max-height: unset;
+        }
+    }
+}
