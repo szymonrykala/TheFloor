@@ -2,13 +2,14 @@
 .DS_Store
 .vscode
 
-# Python-generated files
+# Python files
 __pycache__/
 *.py[oc]
 build/
 dist/
 wheels/
 *.egg-info
+backend/app.log
 
 # Node
 node_modules
